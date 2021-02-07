@@ -35,4 +35,10 @@ QUnit.module('Тестируем функцию inverse', function () {
 		assert.deepEqual(inverse([ 1, 2, 3, 4, 5 ], -5), [ 1, 2, 3, 4, 5 ]);
 		assert.deepEqual(inverse([ 1, 2, 3, 4, 5 ], -15), [ 1, 2, 3, 4, 5 ]);
 	});
+
+	QUnit.test('Функция получает невалидные данные', function (assert) {
+		assert.throws(() => {inverse(null)}, Error("Please, try with correct data: Array (and maybe Number)"));
+		assert.throws(() => {inverse(2, -1)}, Error("Please, try with correct data: Array (and maybe Number)"));
+		assert.throws(() => {inverse([ 1, 2, 3, 4, 5 ], [])}, Error("Please, try with correct data: Array (and maybe Number)"));
+	});
 });

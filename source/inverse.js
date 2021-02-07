@@ -1,16 +1,10 @@
 'use strict';
 
 const inverse = (array, stat = 0) => {
-    let staticArray;
-    let dynamicArray;
-    if (stat >= 0) {
-        staticArray = array.slice(0, stat);
-        dynamicArray = array.slice(stat, array.length);
-    } else {
-        staticArray = array.slice(stat, array.length);
-        dynamicArray = array.slice(0, stat);
+    if (!(Array.isArray(array) && Number.isInteger(stat))) {
+        throw new Error("Please, try with correct data: Array (and maybe Number)");
     }
-    dynamicArray.reverse();
+    let [array1, array2] = [array.slice(0, stat), array.slice(stat, array.length)];
 
-    return stat >= 0 ? staticArray.concat(dynamicArray) : dynamicArray.concat(staticArray);
+    return stat >= 0 ? array1.concat(array2.reverse()) : array1.reverse().concat(array2);
 };
