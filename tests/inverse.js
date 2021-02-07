@@ -10,6 +10,8 @@ QUnit.module('Тестируем функцию inverse', function () {
 		assert.deepEqual(inverse([ 'a' ]), [ 'a' ]);
 		assert.deepEqual(inverse([ null ]), [ null ]);
 		assert.deepEqual(inverse([ false ]), [ false ]);
+		assert.deepEqual(inverse([ undefined ], 1), [ undefined ]);
+		assert.deepEqual(inverse([ undefined ], 5), [ undefined ]);
 	});
 
 	QUnit.test('Функция работает, если в неё передан только массив', function (assert) {
